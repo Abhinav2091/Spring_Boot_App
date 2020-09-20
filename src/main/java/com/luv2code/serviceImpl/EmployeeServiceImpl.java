@@ -1,21 +1,27 @@
 package com.luv2code.serviceImpl;
 
 import com.luv2code.dao.EmployeeDao;
+import com.luv2code.dao.EmployeeRepository;
 import com.luv2code.entity.Employee;
 import com.luv2code.requestVO.EmployeeVO;
 import com.luv2code.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Qualifier("employeeServiceImpl")
 public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Autowired
+    //@Qualifier("employeeDaoImpl")//for simple hibernate
+    @Qualifier("employeeDaoJPAImpl")//for JPA
     private EmployeeDao employeeDao;
+
 
     @Override
     @Transactional //handle transaction no need to manually start or commit.

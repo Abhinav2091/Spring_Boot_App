@@ -4,6 +4,7 @@ package com.luv2code.controller;
 import com.luv2code.requestVO.EmployeeVO;
 import com.luv2code.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeRestController {
 
     @Autowired
+    //@Qualifier("employeeServiceImpl")// for hibernate and JPA
+    @Qualifier("employeeSpringDataJPAServiceImpl")// for Spring DATA JPA
     private EmployeeService employeeService;
+
 
     @GetMapping(value = "/employee")
     public ResponseEntity<Object> getEmployeeList() {
